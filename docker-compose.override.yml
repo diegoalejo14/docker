@@ -10,6 +10,12 @@ services:
       - db
     ports:
       - "3000-3001:3000"
+    volumes:
+      - .:/usr/src
+      #Ignore this path to mount
+      - /usr/src/node_modules
+    #Adjust command run when start container
+    command: npx nodemon --legacy-watch index.js
 
   db:
     image: mongo
